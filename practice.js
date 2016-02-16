@@ -307,6 +307,7 @@ function MakePerson(n, b, s){
 
 
 
+
 //NEXT PROBLEM
 
 
@@ -322,3 +323,31 @@ function bindCard (pObj, cObj){
     return newObject;
 }
   //Code Here
+
+  function bindCard(personObj, cardObj){
+    var newObject ={};
+    for (var item in personObj){
+      newObject[item] = personObj[item];
+    }
+    for (var item in cardObj){
+      newObject[item] = cardObj[item];
+
+    }
+    return newObject;
+  }
+
+  ====refactored===
+  
+  var mergeObjs = function(obj1, obj2){
+  for(var key in obj1){
+    obj2[key] = obj1[key]    
+  }
+  return obj2
+}
+
+var bindCard = function(personObj, cardObj){
+  var mergedObj = {}
+  mergedObj = mergeObjs(personObj, mergedObj)
+  mergedObj = mergeObjs(cardObj, mergedObj)
+  return mergedObj
+}
